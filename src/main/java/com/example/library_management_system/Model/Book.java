@@ -20,6 +20,8 @@ public class Book {
     private Integer id;
     private String name;
 
+    private Genre genre;
+
     private Boolean isAvailable;
     private Long issueCount;
 
