@@ -8,6 +8,8 @@ import com.example.library_management_system.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BookService {
 
@@ -26,4 +28,26 @@ public class BookService {
         return this.bookRepository.save(book);
 
     }
+
+    public Book create(Book book) {
+        Author author = book.getAuthor();
+        if(author != null && author.getId()==null){
+            author = this.authorService.GetOrCreate(author);
+            book.setAuthor(author);
+
+        }
+        return this.bookRepository.save(book);
+    }
+
+    public Book findById(Integer bookId) {
+       return bookRepository.findById(bookId).orElse(null);
+    }
+
+    public List<Book> findAll() {
+        return bookRepository.findAll();
+    }
+    public List<Book> findByStudentId(Integer studentId) {
+        return bookRepository.findByStudentId(studentId);
+    }
+
 }

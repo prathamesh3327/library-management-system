@@ -20,6 +20,9 @@ public class Transaction {
     @Enumerated(value=EnumType.STRING)
     private TransactionsStatus status;
 
+    private String externalTxnId;
+
+
     @CreationTimestamp
     private Date createdAt;
 

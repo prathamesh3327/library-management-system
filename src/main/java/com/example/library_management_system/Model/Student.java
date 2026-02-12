@@ -25,7 +25,7 @@ public class Student {
     @Enumerated(value=EnumType.STRING)
     private Department department;
     @Column(unique=true,nullable=false)
-    private String rollNo;
+    private Integer rollNo;
     @CreationTimestamp
     private Date createdDate;
 
