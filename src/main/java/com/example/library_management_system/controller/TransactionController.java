@@ -22,4 +22,10 @@ public class TransactionController {
 
     }
 
+    @PostMapping("/return")
+    public String returnTransaction(@RequestParam("student-id") Integer studentId,
+                                    @RequestParam("book-id") Integer bookId) {
+        return transactionService.returnTxn(studentId,bookId);
+    }
+
 }

@@ -39,6 +39,11 @@ public class BookService {
         return this.bookRepository.save(book);
     }
 
+    public List<Book> findByName(String name){
+        return bookRepository.findByName(name);
+
+    }
+
     public Book findById(Integer bookId) {
        return bookRepository.findById(bookId).orElse(null);
     }
