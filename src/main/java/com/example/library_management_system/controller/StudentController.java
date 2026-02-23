@@ -7,10 +7,9 @@ import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/students")
@@ -21,12 +20,23 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
-    @PostMapping("")
+    @PostMapping("/add-studnet")
     public Student addStudent(@Valid @RequestBody CreateStudentRequest createStudentRequest){
         logger.info("add student request received - {}", createStudentRequest);
 
         return studentService.createStudent(createStudentRequest);
 
 
+    }
+    @DeleteMapping("/delete-student-by-id")
+    public String deleteStudent(@RequestParam(name = "id") Integer id){
+        logger.info("delete student request received - {}", id);
+        return studentService.deleteStudent(id);
+    }
+
+    @GetMapping("/all-students")
+    public List<Student> getAllStudents(){
+        logger.info("get all students request received");
+        return studentService.findAllStudents();
     }
 }

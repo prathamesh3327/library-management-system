@@ -3,6 +3,7 @@ package com.example.library_management_system.service;
 
 import com.example.library_management_system.Model.Author;
 import com.example.library_management_system.Model.Book;
+import com.example.library_management_system.Model.Genre;
 import com.example.library_management_system.dtos.CreateBookRequest;
 import com.example.library_management_system.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,10 @@ public class BookService {
     public List<Book> findByName(String name){
         return bookRepository.findByName(name);
 
+    }
+
+    public List<Book> findByGenre(String genre){
+        return bookRepository.findByGenre(Genre.valueOf(genre));
     }
 
     public Book findById(Integer bookId) {

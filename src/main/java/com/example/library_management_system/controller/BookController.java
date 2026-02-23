@@ -32,4 +32,10 @@ public class BookController {
         logger.info("find book by name request received- {}", name);
         return bookService.findByName(name);
     }
+
+    @GetMapping("/find-by-genre")
+    public List<Book> findBookByGenre(@RequestParam("genre") String genre) {
+        logger.info("find book by genre request received- {}", genre);
+        return bookService.findByGenre(genre);
+    }
 }
